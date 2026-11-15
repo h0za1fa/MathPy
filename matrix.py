@@ -27,3 +27,16 @@ class matrix:
 
     def set_value(self, row, column, val):
         self.matrix[row-1][column-1] = val
+
+    def add(self, matrix_toadd: matrix):
+        try:
+            if matrix_toadd.rows != self.rows and matrix_toadd.columns != self.columns:
+                raise IndexError("number of rows and columns is not equal")
+        except IndexError as e:
+            print(e)
+            return
+        matrix_sum = matrix(self.rows, self.columns)
+        for row in self.rows:
+            for column in self.columns:
+                matrix_sum[row][column] = matrix[row][column] + self.matrix[row][column]
+        return matrix
